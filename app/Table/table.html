@@ -1,0 +1,57 @@
+<div ng-app>
+<div class ="row">
+<heading class = "col-md-8">
+
+</heading>
+  <article class = "col-md-8" ng-controller="PostsCtrl">
+   
+  <form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+
+        <input type="text" class="form-control" placeholder="Search the locations" ng-model="searchTable">
+
+      </div>      
+    </div>
+  </form>
+
+     
+<table st-table="rowCollection" class="table table-striped">
+  <thead>
+  <tr>
+    <th><a href="" ng-click="sortType = 'AREA_NAME'; sortReverse=!sortReverse">Location
+    <span ng-show="sortType == 'AREA_NAME' && !sortReverse" class="fa fa-caret-down"></span>
+    <span ng-show="sortType=='AREA_NAME' && sortReverse" class="fa fa-caret-up"></span></a></th>
+    
+    <th><a href="" ng-click="sortType = 'OCC_TITLE'; sortReverse=!sortReverse">Title
+    <span ng-show="sortType == 'OCC_TITLE' && !sortReverse" class="fa fa-caret-down"></span>
+    <span ng-show="sortType=='OCC_TITLE' && sortReverse" class="fa fa-caret-up"></span></a></th>
+    
+    <th><a href="" ng-click="sortType = 'Ratio'; sortReverse=!sortReverse">75th percentile rent/median salary
+    <span ng-show="sortType == 'Ratio' && !sortReverse" class="fa fa-caret-down"></span>
+    <span ng-show="sortType=='Ratio' && sortReverse" class="fa fa-caret-up"></span></a></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="post in posts | orderBy:sortType:sortReverse | filter:searchTable"
+  ng-class="{success:(post.Ratio<0.25),danger:(post.Ratio>0.35)}">
+  
+    <td>{{post.AREA_NAME}}</td>
+    <td>{{post.OCC_TITLE}}</td>
+    <td>{{post.Ratio*100 | number:1}}</td>
+  </tr>
+  </tbody>
+</table>
+  
+  </article>
+<aside class = "col-md-4">
+  <p><strong>Web Developer</strong>: Web developers design and create websites. They are responsible for the look of the site. They are also responsible for the site’s technical aspects, such as performance and capacity, which are measures of a website’s speed and how much traffic the site can handle. They also may create content for the site.</p>
+  <p><strong>Computer Programmers</strong>: Computer programmers write code to create software programs. They turn the program designs created by software developers and engineers into instructions that a computer can follow.</p>
+  <p><strong>Software Developer</strong>: Software developers are the creative minds behind computer programs. Some develop the applications that allow people to do specific tasks on a computer or other device. Others develop the underlying systems that run the devices or control networks.</p>
+  <p><strong>Composite titles</strong>: Weighted average of the median salaries of the other titles if more than was available per region</p>
+</aside>
+
+</div>
+</div>
+<footer>Bio info</footer>

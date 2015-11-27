@@ -1,0 +1,8 @@
+angular.module('myApp.table', ['ngRoute', "ngTable", "ngResource",])
+
+.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/table', {
+    templateUrl: 'Table/table.html',
+    controller: 'TableCtrl'
+  });
+}])
