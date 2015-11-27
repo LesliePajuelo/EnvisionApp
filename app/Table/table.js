@@ -22,6 +22,7 @@ angular.module('myApp.Table', ['ngRoute', 'smart-table'])
   $http.get('assets/joined.json').
     success(function(data) {
       $scope.posts = data;
+      
     }).
     error(function(data) {
       // log error
