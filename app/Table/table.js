@@ -19,10 +19,10 @@ angular.module('myApp.Table', ['ngRoute', 'smart-table'])
     // scope.selectedPredicate = scope.predicates[0];
 }]).controller("PostsCtrl", function($scope, $http) {
   //Pulling in housing data, incomplete
-  $http.get('assets/joined.json').
+  $http.get('assets/joinedData.json').
     success(function(data) {
       $scope.posts = data;
-      
+
     }).
     error(function(data) {
       // log error
